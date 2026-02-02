@@ -83,7 +83,8 @@ nav:
     - Architecture: development/architecture.md
     - Creating Adapters: development/creating-adapters.md
   - Reference:
-    - API: reference/api.md
+    - REST API: reference/api.md
+    - Python SDK: reference/sdk-client.md
 
 extra:
   social:
