@@ -181,7 +181,7 @@ TOKEN=$(oc whoami -t)
 
 # Access EvalHub with token
 curl -k -H "Authorization: Bearer $TOKEN" \
-  "https://$EVALHUB_URL/api/v1/providers"
+  "https://$EVALHUB_URL/api/v1/evaluations/providers"
 ```
 
 ## Development Workflow
@@ -500,11 +500,11 @@ TOKEN=$(oc whoami -t)
 
 # List all providers
 curl -k -H "Authorization: Bearer $TOKEN" \
-  "https://$EVALHUB_URL/api/v1/providers" | jq .
+  "https://$EVALHUB_URL/api/v1/evaluations/providers" | jq .
 
 # List benchmarks for a specific provider
 curl -k -H "Authorization: Bearer $TOKEN" \
-  "https://$EVALHUB_URL/api/v1/providers/lm_evaluation_harness/benchmarks" | jq .
+  "https://$EVALHUB_URL/api/v1/evaluations/providers/lm_evaluation_harness/benchmarks" | jq .
 ```
 
 **Submit a test evaluation:**
