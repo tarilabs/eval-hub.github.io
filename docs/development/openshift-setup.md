@@ -280,6 +280,9 @@ vim config/overlays/odh/params.env
 vim config/rbac/evalhub_resource_manager_role.yaml
 ```
 
+!!! info
+    In the remainder of this document, references to `./config` in shell commands refer to the `config/` directory within the `trustyai-service-operator` repository cloned above.
+
 #### Upload Manifests
 
 Follow these steps to upload your custom manifests to the OpenDataHub operator:
@@ -330,7 +333,7 @@ oc wait --for=condition=ready pod -n openshift-operators -l name=opendatahub-ope
 POD=$(oc get pod -n openshift-operators -l name=opendatahub-operator -o jsonpath='{.items[0].metadata.name}')
 
 # Copy manifests from your local repository to the operator pod
-oc cp ./trustyai-service-operator/config/. openshift-operators/${POD}:/opt/manifests/trustyai
+oc cp ./config openshift-operators/${POD}:/opt/manifests/trustyai
 ```
 
 **Step 4: Restart operators**
@@ -399,7 +402,7 @@ To update your manifests during development:
 2. **Copy updated manifests to the operator pod**:
    ```bash
    POD=$(oc get pod -n openshift-operators -l name=opendatahub-operator -o jsonpath='{.items[0].metadata.name}')
-   oc cp ./trustyai-service-operator/config/. openshift-operators/${POD}:/opt/manifests/trustyai
+   oc cp ./config openshift-operators/${POD}:/opt/manifests/trustyai
    ```
 3. **Restart operators**:
    ```bash
@@ -462,7 +465,7 @@ Then upload the modified manifests using the commands from the previous section:
 ```bash
 # Copy manifests to operator pod
 POD=$(oc get pod -n openshift-operators -l name=opendatahub-operator -o jsonpath='{.items[0].metadata.name}')
-oc cp ./trustyai-service-operator/config/. openshift-operators/${POD}:/opt/manifests/trustyai
+oc cp ./config openshift-operators/${POD}:/opt/manifests/trustyai
 
 # Restart operators
 oc rollout restart deploy -n openshift-operators -l name=opendatahub-operator
